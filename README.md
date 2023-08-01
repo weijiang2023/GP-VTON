@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>GP-VTON: Towards General Purpose Virtual Try-on via Collaborative Local-Flow Global-Parsing Learning</h1>
+<h1>算法妈妈虚拟试衣</h1>
 
 <div>
     <a href="https://xiezhy6.github.io/" target="_blank">Zhenyu Xie</a><sup>1</sup>,
@@ -166,3 +166,12 @@ Thanks to [PF-AFN](https://github.com/geyuying/PF-AFN), our code is based on it.
 
 ## License
 The use of this code is RESTRICTED to non-commercial research and educational purposes.
+
+## Useful Commands
+python3 -m torch.distributed.launch --nproc_per_node=8 --master_port=4739 test_warping.py \
+    --name test_partflow_vitonhd_unpaired_1109 \
+    --PBAFN_warp_checkpoint 'checkpoints/gp-vton_partflow_vitonhd_usepreservemask_lrarms_1027/PBAFN_warp_epoch_121.pth' \
+    --resize_or_crop None --verbose --tf_log \
+    --batchSize 2 --num_gpus 8 --label_nc 14 --launcher pytorch \
+    --dataroot 'datasets/VITONHD' \
+    --image_pairs_txt test_pairs_unpaired_1018.txt
